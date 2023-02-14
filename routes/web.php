@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CocheController;
+use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,16 @@ Route::get('/',function(){
 });
        
 Route::get('/coches/buscar',[CocheController::class,'buscar'])->name('coches.buscar');
-    
 Route::post('/coches/find',[CocheController::class,'busqueda'])->name('coches.busqueda');
-    
 Route::resource('coches',CocheController::class);
+
+Route::get('/usuario', [UsuariosController::class, 'show'])->name('usuarios');
+Route::post('/crearUsuario', [UsuariosController::class, 'create']);
+Route::delete('/usuario/{id}', [UsuariosController::class, 'destroy']);
+
+Route::get('/asignar', [CocheController::class, 'asignar']);
+Route::post('/asignado', [CocheController::class, 'asignado']);
+
+Route::get('/', [CocheController::class, 'buscador']);
+Route::get('/buscadorFecha', [CocheController::class, 'buscadorFecha']);
+Route::get('/buscadorUsuario', [CocheController::class, 'buscadorUsuario']);

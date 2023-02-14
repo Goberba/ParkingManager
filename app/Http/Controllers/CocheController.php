@@ -134,4 +134,27 @@ class CocheController extends Controller
 
         return view('buscar',$datos);
     }
+
+    public function buscadorFecha(Request $request){
+        $usuarios = Usuarios::all();  
+        $coches = $request->except("_token");
+        if($request->get('buscador')){
+            $coches = Coche::where("created_at", "LIKE", "%{$request->get('buscador')}%")
+                ->paginate();
+                return view('buscador', ['coches' => $coches] , ['usuarios' => $usuarios]);
+        }
+        return view('index');
+    }
+
+    public function buscadorUsuario(Request $request){
+        $usuarios = Usuarios::all(); 
+        $coches = Coche::all();
+
+        if($request->get('users')){
+             $coches = Coche::where('user_id', "LIKE", "%{$request->get('users')}%")->paginate();
+
+            return view('buscador', ['coches' => $coches] , ['usuarios' => $usuarios]);
+        }
+        return view('index');
+    }
 }

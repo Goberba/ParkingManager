@@ -17,6 +17,9 @@
                 <li class="nav-item">
                   <a class="nav-link  " href="{{url('coches\buscar')}}">Buscar Coche</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link  " href="{{url('usuario')}}">Usuarios</a>
+                </li>
               </ul>
             </div>
           </nav>

@@ -14,6 +14,7 @@
     
     @extends('navbar')
    <div class='d-flex flex-column align-items-center'>
+    @yield('busquedaFechaUsuario')
     @yield('meter')
     @yield('lista')
     @yield('principal')
